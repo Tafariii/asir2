@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area circulo</title>
+    <script>
+        let radio = prompt("Introduzca el radio del circulo: ");
+        radio = Number(radio);
+        if (isNaN(radio)) {
+            alert("Eso no es un numero")
+        } else {
+        area = Math.pow(radio,2) * Math.PI;
+        alert(`El area del circulo es ${area}`);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
