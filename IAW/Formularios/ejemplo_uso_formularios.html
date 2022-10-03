@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de uso de formularios</title>
+    <script>
+        function ok() {
+            // Ejemplo de validacion de un campo que no pueda estar vacio
+            if (document.getElementById("c1").value == "") {
+                alert("El campo no puede estar vacio");
+                return false;
+            } 
+            // Ejemplo de validacion de una password que empiece con mayuscula,
+            // tenga 6 caracteres y contenga un numero
+            valor = document.getElementById("c2").value;
+            if (/(?=.*\d)[A-ZÑ]\w{5,}/.test(valor) == false) {
+                alert("Los datos introducidos no son correctos");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulario Ejemplo</h1>
+    <form action="#" method="GET" onsubmit="return ok()">
+        Campo input: <input type="text" name="c1" id="c1"><br>
+        Campo password: <input type="password" name="c2" id="c2"><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
