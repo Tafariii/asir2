@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista 3 Ejercicio 1</title>
+</head>
+<body>
+    <h1>Registro de usuario</h1>
+    <form action="../recibe_datos_form1.php" method="post" onsubmit="return Validad()">
+
+       Nombre y Apellidos <input type="text" name="nombre" id="c1"><br>
+        Email <input type="text" name="email" id="c2"><br>
+        Password<input type="password" name="password" id="c3"><br>
+        Password Confirmation<input type="password" id="c4"><br>
+        <span id="numero1"></span> + <span id="numero2"></span><input type="number" id="c5"><br>
+        Acepto las condiciones <input type="checkbox" id="c6" onchange="habilitar()"><br>
+        <input type="submit" value="Crear Cuenta" id="submit" disabled>
+
+    </form>
+    <script>
+        var numero = Math.floor(Math.random()*10);
+        var numero2 = Math.floor(Math.random()*10);
+        document.getElementById("numero1").innerHTML = numero;
+        document.getElementById("numero2").innerHTML = numero2;
+
+        // Funcion para habilitar o deshabilitar el submit de creacion
+        function habilitar() {
+            if (document.getElementById("c6").checked) {
+                document.getElementById("submit").disabled = false;
+            }else {
+                document.getElementById("submit").disabled = true;
+            }
+        }
+
+        // Funcion que valida los elementos del formulario
+        function Validar() {
+            if (/\S+/.test(document.getElementById("c1").value) == false) {
+                alert("El nombre no puede estar vacio");
+                document.getElementById("c1").focus();
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+    </script>
+</body>
+</html>
