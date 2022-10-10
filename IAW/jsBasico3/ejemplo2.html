@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista 3 Ejercicio 2</title>
+    <script>
+        var municipios = [
+        [
+    {
+      "id": "1",
+      "nombre": "Alcalá de los Gazules"
+    },
+    {
+      "id": "2",
+      "nombre": "Alcalá del Valle"
+    },
+    {
+      "id": "3",
+      "nombre": "Algar"
+    },
+    {
+      "id": "4",
+      "nombre": "Algeciras"
+    },
+    {
+      "id": "5",
+      "nombre": "Algodonales"
+    },
+    {
+      "id": "6",
+      "nombre": "Arcos de la Frontera"
+    },
+    {
+      "id": "7",
+      "nombre": "Barbate"
+    },
+    {
+      "id": "8",
+      "nombre": "Benalup-Casas Viejas"
+    },
+    {
+      "id": "9",
+      "nombre": "Benaocaz"
+    },
+    {
+      "id": "10",
+      "nombre": "Bornos"
+    },
+    {
+      "id": "11",
+      "nombre": "Cádiz"
+    },
+    {
+      "id": "12",
+      "nombre": "Castellar de la Frontera"
+    },
+    {
+      "id": "13",
+      "nombre": "Chiclana de la Frontera"
+    },
+    {
+      "id": "14",
+      "nombre": "Chipiona"
+    },
+    {
+      "id": "15",
+      "nombre": "Conil de la Frontera"
+    },
+    {
+      "id": "16",
+      "nombre": "El Bosque"
+    },
+    {
+      "id": "17",
+      "nombre": "El Gastor"
+    },
+    {
+      "id": "18",
+      "nombre": "El Puerto de Santa María"
+    },
+    {
+      "id": "19",
+      "nombre": "Espera"
+    },
+    {
+      "id": "20",
+      "nombre": "Grazalema"
+    },
+    {
+      "id": "21",
+      "nombre": "Jerez de la Frontera"
+    },
+    {
+      "id": "22",
+      "nombre": "Jimena de la Frontera"
+    },
+    {
+      "id": "23",
+      "nombre": "La Línea de la Concepción"
+    },
+    {
+      "id": "24",
+      "nombre": "Los Barrios"
+    },
+    {
+      "id": "25",
+      "nombre": "Medina-Sidonia"
+    },
+    {
+      "id": "26",
+      "nombre": "Olvera"
+    },
+    {
+      "id": "27",
+      "nombre": "Paterna de Rivera"
+    },
+    {
+      "id": "28",
+      "nombre": "Prado del Rey"
+    },
+    {
+      "id": "29",
+      "nombre": "Puerto Real"
+    },
+    {
+      "id": "30",
+      "nombre": "Puerto Serrano"
+    },
+    {
+      "id": "31",
+      "nombre": "Rota"
+    },
+    {
+      "id": "32",
+      "nombre": "San Fernando"
+    },
+    {
+      "id": "33",
+      "nombre": "San José del Valle"
+    },
+    {
+      "id": "34",
+      "nombre": "San Roque"
+    },
+    {
+      "id": "35",
+      "nombre": "Sanlúcar de Barrameda"
+    },
+    {
+      "id": "36",
+      "nombre": "Setenil de las Bodegas"
+    },
+    {
+      "id": "37",
+      "nombre": "Tarifa"
+    },
+    {
+      "id": "38",
+      "nombre": "Torre Alháquime"
+    },
+    {
+      "id": "39",
+      "nombre": "Trebujena"
+    },
+    {
+      "id": "40",
+      "nombre": "Ubrique"
+    },
+    {
+      "id": "41",
+      "nombre": "Vejer de la Frontera"
+    },
+    {
+      "id": "42",
+      "nombre": "Villaluenga del Rosario"
+    },
+    {
+      "id": "43",
+      "nombre": "Villamartín"
+    },
+    {
+      "id": "44",
+      "nombre": "Zahara de la Sierra"
+    }
+  ]
+        ]
+    </script>
+  </head>
+  <body>
+    <h1>Registro de personas de la provincia de Cadiz</h1>
+    <form
+      action="../servidor/grabar.php"
+      method="post"
+      onsubmit="return Validar()"
+    >
+      Nombre del usuario
+      <input type="text" name="nombre" id="nombre" />
+      <span id="errorNombre" style="color: red"></span>
+      <br />
+      Password <input type="password" name="password" id="password" />
+      <span id="errorPassword" style="color: red"></span>
+      <br />
+      Municipio
+      <select name="municipio" id="municipio">
+        <span id="errorMunicipio" style="color: red"></span>
+        <br />
+        <option value="-1">-- Seleccione --</option>
+        <option value="Jerez">Jerez de la Frontera</option>
+        <option value="Jimena">Jimena de la Frontera</option>
+        <option value="Puerto">El Puerto de Santa Maria</option>
+        <option value="Chiclana">Chiclana de la Frontera</option>
+        <option value="Otros">...Otros</option>
+      </select>
+      <br />
+      <input type="submit" value="Enviar" />
+    </form>
+
+    <script>
+      function Validar() {
+        // Limpiar spans de error
+        document.getElementById("errorNombre").innerHTML = "";
+        document.getElementById("errorPassword").innerHTML = "";
+        document.getElementById("errorMunicipio").innerHTML = "";
+
+        //NOMBRE: Debe tener, al menos, 8 caracteres (no se permiten espacios en blanco)
+        if (
+          /^\S{8,}$/.test(document.getElementById("nombre").value) == false
+        ) {
+          document.getElementById("errorNombre").innerHTML =
+            "Debe tener, al menos, 8 caracteres (no se permiten espacios en blanco)";
+          return false;
+        }
+
+        // PASSWORD: Debe tener de entre 6 y 10 caracteres alfanuméricos y contar con al menos un dígito y una letra mayúscula.
+        if (
+          /^(?=.*\d)(?=.*[A-Z])\w{6,10}$/.test(
+            document.getElementById("password").value
+          ) == false
+        ) {
+          document.getElementById("errorPassword").innerHTML =
+            "Debe tener de entre 6 y 10 caracteres alfanuméricos y contar con al menos un dígito y una letra mayúscula.";
+            return false;
+        }
+
+        // Si no hay errores
+        return true;
+      }
+    </script>
+  </body>
+</html>
