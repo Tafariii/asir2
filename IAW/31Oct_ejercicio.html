@@ -1,0 +1,86 @@
+<!-- Formulario de registro -->
+<!-- Menu de seleccion de tipo de documento (DNI,NIF,Otros) -->
+<!-- (Input)Codigo del tipo de documento especificado -->
+<!-- Email (debe ser valido) -->
+<!-- Password (Debe tener minimo 6 caracteres y maximo 15 y que contenga al menos -->
+<!-- uno de los siguientes signos de puntuacion: "_" (guion bajo), una letra mayuscula y un digito) -->
+<!-- Un `elemento` para evitar bots (catpcha) -->
+<!-- Que el usuario escriba una palabra (escogida al azar), dependiendo de la definicion de la propia palabra -->
+<!-- Ventilador  Instrumento que remueve el aire con aspas-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 31 oct clase</title>
+    <script>
+
+        var palabras = [
+            [
+                {
+                    "palabra": "Ventilador",
+                    "definicion": "Instrumento que remueve el aire con aspas"
+                },
+                {
+                    "palabra": "gato",
+                    "definicion": "Mamífero de la familia de los félidos, digitígrado, doméstico"
+                },
+                {
+                    "palabra": "coche",
+                    "definicion": " Automóvil destinado al transporte de personas y con capacidad no superior a siete plazas."
+                }
+            ]
+        ];
+
+        // Ordenamos por palabra en el array
+        palabras.sort(function(a,b){
+            if (a.palabra < b.palabra) return -1;            
+            if (a.palabra > b.palabra) return 1;
+            return 0;
+        });
+        
+
+    </script>
+  </head>
+  <body>
+    <h1>Formulario de registro del usuario</h1>
+    <form action="" method="post" onsubmit="return ok()">
+     Tipo de documento <select name="documento" id="documento">
+        <option value="DNI">DNI</option>
+        <option value="NIF">NIF</option>
+        <option value="otros">Otros</option>
+      </select>
+      <br />
+      Codigo identificacion<input
+        type="text"
+        name="identificacion"
+        id="identificacion"
+      />
+      <br />
+      Correo electronico <input type="text" name="correo" id="correo" /> <br />
+      Password <input type="password" name="password" id="password" /> <br />
+      Catpcha <input type="text" name="catpcha" id="catpcha" /><br />
+      <input type="submit" value="Enviar" />
+    </form>
+
+    <script>
+        function ok() {
+            // Condiciones correo
+                if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById(`correo`).value) == false) {
+                    alert(`Correo invalido`)
+                    return false;
+                }
+
+             // Condiciones password
+              if (/^(?=.*[A-Z])(?=.*[_])(?=.*\d)\w{6,15}$/.test(document.getElementById(`password`).value) == false) {
+                alert(`Password invalida`)
+                return false;
+            }   
+         return true;             
+        }
+
+    </script>
+  </body>
+</html>
