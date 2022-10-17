@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini test Dacio</title>
+   
+</head>
+<body>
+<h1>Mini Test SQL</h1>
+  
+        <p>Pregunta 1: Cual de las siguientes ordenes forman parte del lenguaje DML(Seleccione 2)</p>
+            <label>CREATE<input type="checkbox" name="check1" id="check1"></label> <br>
+            <label>SELECT<input type="checkbox" name="check2" id="check2"></label> <br>
+            <label>ALTER<input type="checkbox" name="check3" id="check3"></label> <br>
+            <label>DELETE<input type="checkbox" name="check4" id="check4"></label> <br>
+            
+        <p>Pregunta 2: ¿Una vista puede tener el mismo nombre que una tabla? </p>
+            <label>Si<input type="radio" name="radio" id="radio1"></label><br>
+            <label>No<input type="radio" name="radio" id="radio2"></label><br>
+            <label>Si, pero solo puede crearse una<input type="radio" name="radio" id="radio3"></label><br>
+            <label>Si, aunque SQL nos mandara un warning<input type="radio" name="radio" id="radio4"></label>
+        <p>Pregunta 3: Cual es el lenguaje que se utiliza para crear y modificar bases de datos </p>
+        <select name="menu1" id="select">
+            <option value="DDL">DDL</option>
+            <option value="DML">DML</option>
+            <option value="DXML">DXML</option>
+            <option value="DCL">DCL</option>
+        </select>
+        <p>Pregunta 4: ¿Que significan las siglas SQL?</p>
+        <input type="text" name="text" id="text"> <br>
+        <button id="button" onclick="OK()">Corregir</button> <br>
+        <span id="nota"></span>
+    <script>
+        var numeroIntetos = 0;
+      function OK() { 
+        var nota = 0;
+        if (document.getElementById("check2").checked && document.getElementById("check4").checked && document.getElementById("check1").unchecked && document.getElementById("check3").unchecked) {
+           nota += 1; 
+        } 
+        if (document.getElementById("radio2").checked) {
+            nota += 1;
+        }
+        if (document.getElementById("select").value == "DML") {
+            nota += 1;
+        }
+        if (document.getElementById("text").value.toLowerCase() == "structured query language" ||  document.getElementById("text").value.toLowerCase() == "lenguaje de consulta estructurada") {
+            nota += 1;
+        } 
+        if (document.getElementById("button").value = "Corregir") {
+            document.getElementById("button").innerHTML = "Reintentar"
+        }
+        numeroIntetos += 1;
+        var porcentaje = nota*100/4;
+        document.getElementById("nota").innerHTML = `Tu nota es ${nota} / ${porcentaje}% y tu numero de intentos es ${numeroIntetos}`;
+    }    
+  
+    </script>
+</body>
+</html>
